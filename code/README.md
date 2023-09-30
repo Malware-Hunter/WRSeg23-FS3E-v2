@@ -97,7 +97,7 @@ The work was reviewed by:
 This was a collaborative process, where each individual contributed to the implementation of one or more methods. All implementations were reviewed to ensure fidelity to the original.
 
 Link to Papers
-- FSDROID: Link
+- FSDROID: https://link.springer.com/article/10.1007/s11042-020-10367-w
 - SEMIDROID: Link
 - LINEARREGRESSION: Link
 - RFG: Link
