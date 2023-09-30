@@ -98,12 +98,17 @@ This was a collaborative process, where each individual contributed to the imple
 
 Link to Papers
 - FSDROID: https://link.springer.com/article/10.1007/s11042-020-10367-w
-- SEMIDROID: Link
-- LINEARREGRESSION: Link
-- RFG: Link
-- ABC: Link
-- JOWNDROID: Link
-- MT: Link
-- SIGPID: Link
-- SIGAPI: Link
-
+- SEMIDROID: 
+https://link.springer.com/article/10.1007/s13042-020-01238-9
+- LINEARREGRESSION: https://link.springer.com/article/10.1007/s00521-021-05875-1
+- RFG: 
+https://www.mdpi.com/2079-9292/9/3/435
+- ABC: 
+https://dl.acm.org/doi/abs/10.1145/3410530.3414598
+- JOWNDROID: https://www.sciencedirect.com/science/article/abs/pii/S016740482030359X
+- MT: 
+https://www.sciencedirect.com/science/article/pii/S1319157821003049
+- SIGPID: 
+https://ieeexplore.ieee.org/document/7888730
+- SIGAPI: 
+https://www.semanticscholar.org/paper/Significant-API-Calls-in-Android-Malware-Detection-Galib-Hossain/a1c5d7097ec467b246ee2c372461934427fac1cd
