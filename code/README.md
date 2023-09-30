@@ -74,3 +74,35 @@ FS3E has been tested in the following environments:
 
 - Kernel = `Linux version 5.4.0-120-generic (buildd@lcy02-amd64-006) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)) #136-Ubuntu SMP Fri Jun 10 13:40:48 UTC 2022`
 - Python = `Python 3.8.10`
+
+Collaboration & Review
+Collaboration
+The following individuals collaborated in this project:
+
+Lucas
+Vanderson
+Nicolas
+Luiza
+Savio
+Joner
+Review
+
+Review
+The work was reviewed by:
+
+Diego
+Vanderson
+
+This was a collaborative process, where each individual contributed to the implementation of one or more methods. All implementations were reviewed to ensure fidelity to the original.
+
+Link to Papers
+FSDROID: Link
+SEMIDROID: Link
+LINEARREGRESSION: Link
+RFG: Link
+ABC: Link
+JOWNDROID: Link
+MT: Link
+SIGPID: Link
+SIGAPI: Link
+
