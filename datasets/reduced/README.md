@@ -2,6 +2,6 @@
 
 Reduced Datasets are Named Following Standard:
 
-**<method>_<original_dataset>**
+**METHOD_DATASET.csv**
 
-Example: fsdroid_adroit.csv (Method: FSDroid / Original Dataset: ADROIT)
+Example: fsdroid_adroit.csv (Method: FSDroid / Dataset: ADROIT)
