@@ -6,3 +6,4 @@ matplotlib==3.5.2
 mlxtend==0.20.0              
 numpy==1.23.1
 tqdm==4.64.0
+termcolor==2.3.0
