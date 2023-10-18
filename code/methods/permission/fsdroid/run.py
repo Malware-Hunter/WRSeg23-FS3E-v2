@@ -14,8 +14,6 @@ def add_arguments(parser):
     parser = parser.add_argument_group("Arguments for FSDroid")
     parser.add_argument("--k", type=int, help="Number of best caracteristics", required = False, default = 10)
 
-
-
 def information_gain(feature, target):
     """
     Calcula o ganho de informação de uma característica.
@@ -250,16 +248,9 @@ def run(args,ds):
         if col not in best:
             new_ds = new_ds.drop(col, axis=1)
     new_ds[parsed_args.class_column] = dataset[parsed_args.class_column]
-    MYDIR = ("results")
-    CHECK_FOLDER = os.path.isdir(MYDIR)
-    if not CHECK_FOLDER:
-        os.makedirs(MYDIR)
-    ds = ds.split("\\")[-1].split(".")
-    new_ds.to_csv("results/fsdroid_"+ds[0]+".csv", index=False)
+    output_dir = parsed_args.output
+    if not os.path.isdir(output_dir):
+        os.makedirs(output_dir)
 
-
-
-
-    
-
-
+    output_file = os.path.join(output_dir, f'fsdroid_{os.path.basename(ds)}')
+    new_ds.to_csv(output_file, index = False)
