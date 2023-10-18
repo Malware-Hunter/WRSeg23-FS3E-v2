@@ -2,7 +2,7 @@
 
 import argparse
 from termcolor import colored, cprint
-from methods.utils import *
+from evaluation import *
 import argparse
 import sys
 import glob
@@ -53,6 +53,7 @@ def modify_choices(parser, dest, choices):
 def parse_args(argv):
     global methods_types
     global methods_dict
+    global ml_models
 
     action_base_parser = argparse.ArgumentParser(add_help = False)
     action_base_group = action_base_parser.add_mutually_exclusive_group(required = True)
@@ -105,8 +106,16 @@ def parse_args(argv):
         '--verbose', help = "Show More Run Info.",
         action = 'store_true')
     action_run.add_argument(
-        '--output', help = "Output File Directory. Default: ./results",
-        type = str, default = './results')
+        '--output', help = "Output File Directory. Default: results",
+        type = str, default = 'results')
+    ml_run_group = action_run.add_mutually_exclusive_group(required = True)
+    ml_run_group.add_argument(
+        '--ml-models', nargs = '+', metavar = 'MODEL',
+        help = 'ML Model for Evaluation of Datasets Resulting from Feature Selection. Choices: ' + str(ml_models),
+        choices = ml_models, type = str)
+    ml_run_group.add_argument(
+        '--all-ml-models', help = f'Run ALL Available ML Models',
+        action = 'store_true')
     args_, _ = parser.parse_known_args()
 
     if args_.action == 'run':
@@ -152,30 +161,19 @@ def run_methods(args, type, mth, ds):
     model_instance = import_module(module)
     model_instance.run(args,ds)
 
-
-
 if __name__ == '__main__':
     logging.basicConfig(format = '%(name)s - %(levelname)s - %(message)s')
     global methods_path
     global methods_type
     global methods_dict
+    global ml_models
     global logger
-    global all_results
-    global predict_results
-    global roc_results
     logger = logging.getLogger('FS3E')
-    predict_results = list()
     methods_path = 'methods'
     methods_types = get_dir_list(methods_path)
     methods_dict = get_methods()
-    all_results = pd.DataFrame()
-    roc_results = pd.DataFrame()
-    predict_results = list()
-
-    #print(methods_dict)
-
+    ml_models = ['svm', 'rf']
     args = parse_args(sys.argv[1:])
-
 
     if args.action == 'list':
         if args.ft_types:
@@ -188,21 +186,18 @@ if __name__ == '__main__':
 
     datasets_list = args.datasets
     for ds in datasets_list:
-        try:
-            print(f'carregando dataset {ds}')
-            #dataset = pd.read_csv(ds)
-        except BaseException as e:
-            msg = colored("Exception: {}".format(e), 'red')
-            logger.error(msg)
-            exit(1)
-
         selected_methods = args.fs_methods
         selected_types = methods_types
+        selected_ml_models = ml_models
         if args.ft_types:
             selected_types = args.ft_types
+
+        if args.ml_models:
+            selected_ml_models = args.ml_models
 
         for type in selected_types:
             methods = methods_dict[type]
             for mth in methods:
                 if not selected_methods or mth in selected_methods:
                     run_methods(args, type, mth, ds)
+                    run_ml_models(args, selected_ml_models, mth, ds)
