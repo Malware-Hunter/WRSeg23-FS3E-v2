@@ -20,7 +20,7 @@ def add_arguments(parser):
     parser.add_argument("--increment", type=int, help="Increment. Default: 20", required = False, default = 20)
     parser.add_argument("--feature_only", type=bool, help="Feature Selection Only", required = False, default = False)
     parser.add_argument(
-        '-t', '--threshold',
+        '--rfg-threshold',
         help = 'Threshold to choose the best dataset of selected features based on --heuristic-metric. Default: 0.95.',
         type = float,
         default = 0.95)
@@ -149,5 +149,5 @@ def run(args, ds):
     if not os.path.isdir(output_dir):
         os.makedirs(output_dir)
     output_file = os.path.join(output_dir, f'rfg_{os.path.basename(ds)}')
-      
+
     get_best_features_dataset(get_best_result(results, parsed_args.threshold, parsed_args.heuristic_metric, parsed_args.decrement_step), feature_rankings, parsed_args.class_column).to_csv(output_file, index=False)

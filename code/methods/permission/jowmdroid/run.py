@@ -14,7 +14,7 @@ def add_arguments(parser):
     parser.add_argument(
         '--ignore-mi', help = 'Ignore Mutual Information before calculating weights',
         action = 'store_true')
-    parser.add_argument( '-t', '--weights-threshold', type = float, default = 0.2,
+    parser.add_argument( '-wt', '--weights-threshold', type = float, default = 0.2,
         help = 'Only features with weight greater than or equal to this value will be selected. Default: 0.2')
 
 def select_features_with_mi(X, y):

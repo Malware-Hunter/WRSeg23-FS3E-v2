@@ -47,11 +47,11 @@ def correlation_phase(X, y, k, method, methods):
     return new_X
 
 def add_arguments(parser):
-    parser.add_argument('-t', '--threshold', type = float, default = 0.03,
+    parser.add_argument('--threshold-sigapi', type = float, default = 0.03,
         help = 'Threshold for the difference between metrics at each increment on the number of features. When all metrics are less than it, the selection phase finishes. Default: 0.03')
     parser.add_argument( '-f', '--initial-n-features', type = int, default = 1,
         help = 'Initial number of features. Default: 1')
-    parser.add_argument( '-i', '--increment', type = int, default = 1,
+    parser.add_argument( '--increment-sigapi', type = int, default = 1,
         help = 'Value to increment the initial number of features. Default: 1')
 
 def get_moving_average(data, window_size=5):
@@ -217,6 +217,6 @@ def run(args,ds):
     if not os.path.isdir(output_dir):
         os.makedirs(output_dir)
     output_file = os.path.join(output_dir, f'sigapi_{os.path.basename(ds)}')
-      
+
     new_X.to_csv(output_file, index=False)
     logger_sigapi.info("Dataset final criado")
