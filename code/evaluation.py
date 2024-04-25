@@ -7,6 +7,7 @@ import logging
 from sklearn import metrics as skmetrics
 from sklearn.metrics import confusion_matrix
 import os
+from termcolor import colored, cprint
 
 def get_X_y(args, dataset):
     X = dataset.drop(columns = args.class_column)

@@ -150,4 +150,4 @@ def run(args, ds):
         os.makedirs(output_dir)
     output_file = os.path.join(output_dir, f'rfg_{os.path.basename(ds)}')
 
-    get_best_features_dataset(get_best_result(results, parsed_args.threshold, parsed_args.heuristic_metric, parsed_args.decrement_step), feature_rankings, parsed_args.class_column).to_csv(output_file, index=False)
+    get_best_features_dataset(get_best_result(results, parsed_args.rfg_threshold, parsed_args.heuristic_metric, parsed_args.decrement_step), feature_rankings, parsed_args.class_column).to_csv(output_file, index=False)

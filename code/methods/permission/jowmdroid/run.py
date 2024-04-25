@@ -96,6 +96,7 @@ def run(args, ds):
     output_dir = parsed_args.output
     if not os.path.isdir(output_dir):
         os.makedirs(output_dir)
-    output_file = os.path.join(output_dir, f'jomwdroid_{os.path.basename(ds)}')
+    output_file = os.path.join(output_dir, f'jowmdroid_{os.path.basename(ds)}')
     logger_jowmdroid.info(f'Saving the Reduced Dataset in {output_file}')
     dataset.to_csv(output_file, index = False)
+    logger_jowmdroid.info('Reduced Dataset Saved')

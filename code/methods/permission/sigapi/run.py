@@ -176,7 +176,7 @@ def selection_phase(X, y, methods, total_features,num_features=1, increment=1):
 
             # A primeira expressão booleana (len(...) > 2) é para evitar comparar as métricas calculadas contra o vetor [0,0,0,0],
             # que é definido inicialmente no dicionário "methods"
-            if(len(methods[method_name]['results']) > 2 and is_method_stable(previous_metrics, current_metrics, parsed_args.threshold)):
+            if(len(methods[method_name]['results']) > 2 and is_method_stable(previous_metrics, current_metrics, parsed_args.threshold_sigapi)):
                 has_found_stable_method = True
                 accuracy = current_metrics[0]
                 if(accuracy > best_metric_value):
@@ -208,7 +208,7 @@ def run(args,ds):
         logger_sigapi.error(f"--initial-n-features ({parsed_args.initial_n_features}) maior que a qtd de features do dataset ({total_features})")
         exit(1)
     logger_sigapi.info("INÍCIO DA SELEÇÃO DE FEATURES")
-    best_stable_method, lower_bound = selection_phase(X, y ,methods, total_features,num_features=parsed_args.initial_n_features, increment=parsed_args.increment)
+    best_stable_method, lower_bound = selection_phase(X, y ,methods, total_features,num_features=parsed_args.initial_n_features, increment=parsed_args.increment_sigapi)
     logger_sigapi.info("SUGESTÃO DE LIMITE PARA A FASE DE CORRELAÇÃO")
     logger_sigapi.info(f'Menor limite inferior encontrado: {best_stable_method}, {lower_bound}')
     logger_sigapi.info("INICIO DA CORRELAÇÃO")
